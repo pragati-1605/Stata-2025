@@ -1,0 +1,23 @@
+ sysuse nlsw88 
+ tabstat wage 
+ tabstat wage ttlexp hours 
+ tabstat wage ttlex phours,stat(meansd min max p50 n) 
+ tabstat wage ttlexp hours,stat(meansd p50 n)col(stat) 
+ tabstat wage ttlexp,stat(mean sd)by(race) 
+ tabstat wage ttlexp,stat(sd) by(race) col(stat) 
+clear all
+ sysuse nlsw88 
+ table race 
+ table race,stat(percent) 
+ table race collgrad
+ table race collgra,stat(percent)
+ table race collgrad,stat(percent,across(collgrade)) 
+ table race collgrad,stat(percent,across(race) 
+ table race collgrad married 
+ table race (collgradmarried) 
+ (table race) collgradmarried 
+ table race,stat(meanwage) 
+ table race,stat(mean wage)stat(sd wage) 
+ table race married,stat(mean wage)stat(sd wage)
+ table(race married),stat(mean wage) stat(sd wage)  
+ table race married,stat(mean wage)stat(sd wage) notoal
