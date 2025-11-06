@@ -1,0 +1,13 @@
+describe
+sysusenlsw88 
+ tabulate race 
+ tab1 race collgrade 
+ tab union south
+ tab union south,row 
+ tab union south,col
+ tab union south,cell 
+ tab union south,ro co ce 
+ bys c_city : tab  union south
+ tab race,su(wage)
+ tab race,su(wage)means   
+ tab race union,su(wage)
