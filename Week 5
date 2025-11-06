@@ -1,0 +1,11 @@
+ ssc install schemepack 
+ sysuse lifeexp,clear
+ twoway(scatter popgrowth lexp) 
+ twoway(scatter popgrowt hlexp),scheme(tab3) 
+ twoway(scatter popgrowth lexp,mlabel(country)),scheme(tab3)
+ twoway(scatter popgrowth lexp,mlabel(country) mcol(red)),scheme(tab3)
+ twoway(scatter popgrowth lexp,mlabel(country) mcol(red) mlabcol(green),scheme(tab3)
+ twoway(scatter popgrowth lexp),saving("grp1.gph",replace)
+ twoway(scatter gnppc lexp),saving("grp2.gph", replace)
+ graph combine grp1.gphgrp2.gph
+ graph combine grp1.gphgrp2.gph,row(2)
