@@ -11,3 +11,6 @@ sysusenlsw88
  tab race,su(wage)
  tab race,su(wage)means   
  tab race union,su(wage)
+ tab race union,chi2 
+ tab race union,exact 
+ tab race union,allexact
