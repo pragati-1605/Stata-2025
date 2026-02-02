@@ -1,0 +1,48 @@
+
+f<-function (k) (k^5)                                      #creating a function       
+a<-c(-5,4,12,17,19)                                        #domain
+b<-f(a)                                                           #range
+plot(a,b)                                                         #using different values
+
+
+data1<-data.frame(gdp=x, inflation=y)        #using first x, y
+plot(data1$gdp, data1$inflation)
+
+m<-function (z) (z^5)                                   #using same z
+z<-c(-5,4,12,17,19)
+j<-m(z)
+plot(z,j)
+
+rm(list=ls())
+ls()
+getwd()                                                       #get the default directory
+setwd("C:/Users/Pragati/OneDrive/Desktop/R")     #set new  always use 2 back slash or single front slash and in inverted commas
+data22<-read.csv("grades.csv")                              #open the data saved in the new directory
+data23<-read.csv("data2.csv")                               #opening new data
+age<-data23$age                                                  #representing age separately from data
+grade<-data23$grade
+plot(age,grade)
+
+
+
+install.packages("ggplot2")                                       #download package
+library(ggplot2)                                                         #call a package
+x<-1:26
+y<-log(x)
+today<-data.frame(x,y)                                             #creating a diagram
+plot(x,y)
+p1<-ggplot(data=today)                                         #creating ggplot
+p1<-p1+(mapping=aes(x=x,y=y))                           #doing aesthetic mapping, basically giving the axis x shown on x axis vise versa      and + is used as p1 was already created like a blank canvas and i am just adding axis to p1
+p1<-p1+geom_point()
+setwd("C:\\Users\\Pragati\\OneDrive\\Desktop\\R")
+data1<-read.csv("gdp_inf.csv")
+head(data1,5)	
+gdp<-data1$gdp_growth                                        #these steps are not required
+inflation<-data1$inflation            
+graph<-data.frame(gdp,inflation)
+p2<-ggplot(data=graph)
+p2<-p2+(mapping=aes(x=gdp,y=inflation))		
+p2<-p2+geom_point()
+rm(list=ls())
+
+p2<-ggplot(data1,aes(gdp_growth,inflation))+geom_point()      #you are not required to create dataframe after importing data just do ggplot
