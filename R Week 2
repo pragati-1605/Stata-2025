@@ -1,0 +1,53 @@
+install.packages("ggplot2")        #download package
+library(ggplot2)                           #call a package
+x<-1:26
+y<-log(x)
+today<-data.frame(x,y)             #creating a diagram
+plot(x,y)
+p1<-ggplot(data=today)             #creating ggplot
+p1<-p1+(mapping=aes(x=x,y=y))           #doing aesthetic mapping, basically giving the axis x shown on x axis vise versa and + is used as p1 was already created like a blank canvas and i am just adding axis to p1
+p1<-p1+geom_point()
+setwd("C:\\Users\\Pragati\\OneDrive\\Desktop\\R")
+data1<-read.csv("gdp_inf.csv")
+head(data1,5)	
+gdp<-data1$gdp_growth               #these steps are not required
+inflation<-data1$inflation            
+graph<-data.frame(gdp,inflation)
+p2<-ggplot(data=graph)
+p2<-p2+(mapping=aes(x=gdp,y=inflation))		
+p2<-p2+geom_point()
+rm(list=ls())
+
+p2<-ggplot(data1,aes(gdp_growth,inflation))+geom_point()      #you are not required to create dataframe after importing data just do ggplot
+
+
+x<-1:26
+y<-log(x)
+z<-LETTERS[1:26]
+today<-data.frame(x,y,z)
+install.packages("gganimate")
+library(ggplot2)
+library(gganimate)
+install.packages("gifski")
+library(gifski)
+p<-ggplot(data=today)        #step 1 object of graph
+p<-p+aes(x=x,y=y)
+p<-p+geom_point(size=4,alpha=0.5)       #alpha shows transparency
+
+ ani_p<-p+transition_manual(x,cumulative=TRUE)                             # step 2 animation: transition along x axis and one time only one point is visible because cumulative=false, when cumullative is true all older points are visible
+animate(ani_p,renderer=gifski_renderer())      #step 3 display
+
+p<-p+geom_point(size=x,alpha=0.5)         #bubble plot :point keeps on increasing in size
+ani_p<-p+transition_manual(x,cumulative=TRUE)
+animate(ani_p,renderer=gifski_renderer())
+
+     #from the data a bubble plot was to be constructed with x and y axis(inflation and gdp) and the size was according to population
+setwd("C:\\Users\\Pragati\\OneDrive\\Desktop\\R")
+data1<-read.csv("task.csv")    #i called the packages by running them from above
+p1<-ggplot(data=data1)
+p1<-p1+aes(x=inflation,y=gdp)
+population<-data1$population      #created an object population
+p1<-p1+geom_point(size=population,alpha=1)
+ani_p1<-p1+transition_manual(inflation,cumulative=TRUE)
+animate(ani_p1,renderer=gifski_renderer())
+
