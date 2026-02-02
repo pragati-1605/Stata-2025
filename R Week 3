@@ -1,0 +1,56 @@
+p1<-p1+geom_point(size=10,alpha=0.1)
+p1<-p1+geom_text(aes(label=gender))                                       # label as the name suggests labels the pointwrites inside the point
+p1<-p1+geom_text(aes(label=gender),position="jitter")              #both jitter and nudge
+(more steps are required) is used to put albel out of the coordinates   
+  
+ #using jitter so label is outside the point randomly  
+p1<-p1+geom_text(aes(label=gender),position="nudge") 
+
+
+p1<-ggplot(data=data1)
+p1<-p1+aes(x=age,y=income,color=age)
+p1<-p1+geom_point(size=6,pch=82)                                          # pch is used to change the shape of coordinates
+
+ #using this data create 2 ggplots first one is labeled by occupation and second one has different colours coordinates depending upon gender ( lab record)
+rm(list=ls())
+occupation<-c("A","A","A","B","B","C","C")
+experience<-c(3,4,2.5,2,6,3,2)
+income<-c(110,100,80,90,120,100,90)
+gender<-c("M","F","F","M","F","M","F"
+data2<-data.frame(occupation,experience,income,gender)
+library(ggplot2)
+p<-ggplot(data=data2)
+p<-p+aes(x=experience,y=income)
+p<-p+geom_point(size=10,alpha=0.1)
+p<-p+geom_text(aes(label=occupation),position="nudge")
+p1<-ggplot(data=data2)
+p1<-p1+aes(x=experience,y=income,color=gender)
+p1<-p1+geom_point(size=5)
+
+
+x<-1:16                  
+y<-x^2
+year<-1990:2005
+data2<-data.frame(y,year)
+library(ggplot2)
+library(gganimate)
+library(gifski)
+p<-ggplot(data=data2)
+p<-p+aes(x=year,y=y)
+p<-p+geom_line(linewidth=5,aes(color=y))                                #using line with geometry to make a line graph
+p_animate<-p+transition_reveal(year)
+animate(p_animate,renderer=gifski_renderer(loop=FALSE))
+
+rm(list=ls())
+setwd("C:\\Users\\Pragati\\OneDrive\\Desktop\\R")
+task<-read.csv("data.csv")
+task$year<-NULL
+task$year<-1994:2007
+library(ggplot2)
+library(gganimate)
+library(gifski)
+p1<-ggplot(data=task)
+p1<-p1+aes(x=year,y=gdp)
+p1<-p1+geom_line(linewidth=3,aes(color=gdp))
+p1_animate<-p1+transition_reveal(year)
+animate(p1_animate,renderer=gifski_renderer())
